@@ -27,11 +27,11 @@ def collect_animal_counts(url):
             if first_letter in animal_dict:
                 animal_dict[first_letter] += 1
 
+        url = None
+
         next_page_link = soup.find("a", text="Следующая страница")
         if next_page_link:
             url = next_page_link.get("href")
-        else:
-            None
         if url:
             url = f"https://ru.wikipedia.org{url}"
 
@@ -44,7 +44,7 @@ def save_csv(data, filename):
         with open(filename, "w", newline="", encoding="utf-8") as csvfile:
             writer = csv.writer(csvfile)
             for letter, count in sorted(data.items()):
-                if count > 0:
+                if count >= 0:
                     writer.writerow([letter, count])
         print(f"Данные успешно сохранены в файл: {filename}")
     except Exception as e:
