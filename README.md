@@ -1,2 +1,2 @@
-# Tetrika
-Test task for Tetrika
+# Тестовое задание Tetrika 
+
